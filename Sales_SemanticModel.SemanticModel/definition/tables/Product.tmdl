@@ -1,0 +1,65 @@
+table Product
+	lineageTag: 04b5d81f-4366-44f2-8814-52c6827c89b8
+	sourceLineageTag: [dbo].[Product]
+
+	measure 'Top Product' =
+			
+			Var A = MAX('Product'[ProductName])
+			Var B = CALCULATE(A,TOPN(1,SUMMARIZE('Sales','Product'[ProductName],"Sales Amount",[Total Sales]),[Total Sales],DESC))
+			RETURN B
+		lineageTag: 151e1ae6-92c9-42fd-90ca-e5c924f7a340
+
+		changedProperty = Name
+
+	measure 'Number of Products' = DISTINCTCOUNT('Product'[ProductID])
+		formatString: 0
+		lineageTag: 44714406-646b-44a2-8a9e-5a714c5d9bfd
+
+		changedProperty = Name
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: 663d0d77-068e-4ace-bba5-8e8d6d33ad74
+		sourceLineageTag: ProductID
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: f3b93d4b-0642-4403-8941-11b06390b52a
+		sourceLineageTag: ProductName
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 833974ac-f11e-4e4c-b816-31e064b679e2
+		sourceLineageTag: Category
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Price
+		dataType: double
+		lineageTag: 3722a1a2-3e44-489e-a879-bd036e06146a
+		sourceLineageTag: Price
+		summarizeBy: none
+		sourceColumn: Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Product = entity
+		mode: directLake
+		source
+			entityName: Product
+			schemaName: dbo
+			expressionSource: 'DirectLake - GoldLayer_LH'
+

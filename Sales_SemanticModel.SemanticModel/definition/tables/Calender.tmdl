@@ -1,0 +1,122 @@
+table Calender
+	lineageTag: 6ce52c11-1be2-4aeb-8a0d-163a442c35fb
+	sourceLineageTag: [dbo].[Calender]
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: General Date
+		lineageTag: e63511fa-baeb-4430-ba38-171cdc73bda2
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: b6d0d12c-5e9d-4abe-bdab-a78e72863ae7
+		sourceLineageTag: Year
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: d1080b72-6ff8-4a29-9d96-13003ce8a2ae
+		sourceLineageTag: Month
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		lineageTag: 229d27dd-f19c-4a52-9926-fda06ababa13
+		sourceLineageTag: Month Name
+		summarizeBy: none
+		sourceColumn: Month Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Short'
+		dataType: string
+		lineageTag: dce3d1bd-f689-4cc7-93fa-e2227aca0324
+		sourceLineageTag: Month Short
+		summarizeBy: none
+		sourceColumn: Month Short
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: 60094960-aad3-490d-942d-0f682a1ffaf7
+		sourceLineageTag: Quarter
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: 5719815d-95d7-49e9-8f35-52eaf2312d52
+		sourceLineageTag: Day
+		summarizeBy: none
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5da937d7-3c12-41f3-a726-53a2e98c0e16
+		sourceLineageTag: Day of Week
+		summarizeBy: none
+		sourceColumn: Day of Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name'
+		dataType: string
+		lineageTag: 45bad22e-6f10-423c-914b-44cf011dcbeb
+		sourceLineageTag: Day Name
+		summarizeBy: none
+		sourceColumn: Day Name
+		sortByColumn: Day
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week of Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b8b410f-bdd8-487f-a414-a74174fd6512
+		sourceLineageTag: Week of Year
+		summarizeBy: none
+		sourceColumn: Week of Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Weekend'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4bfdde45-c262-4ffc-8d41-dfd0c9022f86
+		sourceLineageTag: Is Weekend
+		summarizeBy: none
+		sourceColumn: Is Weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calender = entity
+		mode: directLake
+		source
+			entityName: Calender
+			schemaName: dbo
+			expressionSource: 'DirectLake - GoldLayer_LH'
+

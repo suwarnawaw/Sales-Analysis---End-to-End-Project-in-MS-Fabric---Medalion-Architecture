@@ -1,0 +1,44 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "GoldLayer_DataFlowGen",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "Calender": {
+      "queryId": "b50b3280-ef36-4de2-89aa-3585b4614dc9",
+      "queryName": "Calender",
+      "loadEnabled": false
+    },
+    "CustomerData": {
+      "queryId": "7d8988ec-d3e5-4512-a7a8-16b064598f70",
+      "queryName": "CustomerData",
+      "loadEnabled": false
+    },
+    "Product": {
+      "queryId": "41d716fb-b5aa-4593-a289-9f9dd7426b9e",
+      "queryName": "Product",
+      "loadEnabled": false
+    },
+    "Sales": {
+      "queryId": "d376cfc2-3425-4148-8972-165b1f691793",
+      "queryName": "Sales",
+      "loadEnabled": false
+    },
+    "DefaultDestination": {
+      "queryId": "d2bf3e0b-8e81-47cf-8ce4-fc7c95b0bb3c",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"6d6e8c72-0729-4909-83c3-2f90a000276f\",\"DatasourceId\":\"71df7fb3-aaa5-4da8-844d-5cf02ca589f3\"}"
+    }
+  ]
+}

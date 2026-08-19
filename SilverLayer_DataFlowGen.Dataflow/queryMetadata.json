@@ -1,0 +1,44 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "SilverLayer_DataFlowGen",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "Calender": {
+      "queryId": "950cf754-6f82-4086-9442-9071a739759e",
+      "queryName": "Calender",
+      "loadEnabled": false
+    },
+    "CustomerData": {
+      "queryId": "d8bcd2b3-8021-4254-8562-b4f18e0ccdab",
+      "queryName": "CustomerData",
+      "loadEnabled": false
+    },
+    "Product": {
+      "queryId": "ff26f340-2acc-4cb4-9d4a-58b18e3e37b3",
+      "queryName": "Product",
+      "loadEnabled": false
+    },
+    "Sales": {
+      "queryId": "de69e4eb-efbb-4656-8de2-418ee080b1fa",
+      "queryName": "Sales",
+      "loadEnabled": false
+    },
+    "DefaultDestination": {
+      "queryId": "27321a5d-6704-46f0-a689-21a12f07e4bc",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"6d6e8c72-0729-4909-83c3-2f90a000276f\",\"DatasourceId\":\"71df7fb3-aaa5-4da8-844d-5cf02ca589f3\"}"
+    }
+  ]
+}
