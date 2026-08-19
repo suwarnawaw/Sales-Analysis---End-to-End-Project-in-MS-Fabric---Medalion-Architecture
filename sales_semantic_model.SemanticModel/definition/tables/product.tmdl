@@ -1,0 +1,50 @@
+table product
+	lineageTag: c29278cc-7e1b-4590-8997-b44986ddcb06
+	sourceLineageTag: [dbo].[product]
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: cf025116-937a-4fa0-91cf-af29d3c1cb74
+		sourceLineageTag: ProductID
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: 3f3c8d77-115f-454b-a82c-a40a48673a0f
+		sourceLineageTag: ProductName
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: cb21a6ad-e5f8-45a3-b667-e0dc7f6603a7
+		sourceLineageTag: Category
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Price
+		dataType: double
+		lineageTag: e4749e2c-c652-4a8f-8e7a-e524e617019a
+		sourceLineageTag: Price
+		summarizeBy: none
+		sourceColumn: Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition product = entity
+		mode: directLake
+		source
+			entityName: product
+			schemaName: dbo
+			expressionSource: 'DirectLake - GoldLayer_LH'
+

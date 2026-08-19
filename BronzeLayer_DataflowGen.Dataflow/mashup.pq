@@ -1,7 +1,7 @@
 [DefaultOutputDestinationSettings = [DestinationDefinition = [Kind = "Reference", QueryName = "DefaultDestination", IsNewTarget = true], UpdateMethod = [Kind = "Replace"], DestinationTypeSettings = [Kind = "Table"]], StagingDefinition = [Kind = "FastCopy"]]
 section Section1;
 [BindToDefaultDestination = true]
-shared Sales = let
+shared sales = let
   Source = Lakehouse.Contents([HierarchicalNavigation = null, EnableVorder = true, OutputMetadataRefresh = true]),
   #"Navigation 1" = Source{[workspaceId = "35420ad7-1cd7-4ba0-aeb0-40a5bab22070"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[lakehouseId = "99671cec-d1d6-4607-8ae8-f631650da866"]}[Data],
@@ -14,7 +14,7 @@ shared Sales = let
 in
   #"Changed column type";
 [BindToDefaultDestination = true]
-shared CustomerData = let
+shared customer = let
   Source = Lakehouse.Contents([HierarchicalNavigation = null, EnableVorder = true, OutputMetadataRefresh = true]),
   #"Navigation 1" = Source{[workspaceId = "35420ad7-1cd7-4ba0-aeb0-40a5bab22070"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[lakehouseId = "99671cec-d1d6-4607-8ae8-f631650da866"]}[Data],
@@ -27,7 +27,7 @@ shared CustomerData = let
 in
   #"Changed column type";
 [BindToDefaultDestination = true]
-shared Product = let
+shared product = let
   Source = Lakehouse.Contents([HierarchicalNavigation = null, EnableVorder = true, OutputMetadataRefresh = true]),
   #"Navigation 1" = Source{[workspaceId = "35420ad7-1cd7-4ba0-aeb0-40a5bab22070"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[lakehouseId = "99671cec-d1d6-4607-8ae8-f631650da866"]}[Data],

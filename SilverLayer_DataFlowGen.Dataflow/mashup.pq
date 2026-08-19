@@ -1,7 +1,7 @@
 [DefaultOutputDestinationSettings = [DestinationDefinition = [Kind = "Reference", QueryName = "DefaultDestination", IsNewTarget = true], UpdateMethod = [Kind = "Replace"], DestinationTypeSettings = [Kind = "Table"]], StagingDefinition = [Kind = "FastCopy"]]
 section Section1;
 [BindToDefaultDestination = true]
-shared Calender = let
+shared calender = let
     // Define the start and end dates for the calendar
     StartDate = #date(2024, 1, 1),
     EndDate = #date(2024, 12, 31),
@@ -23,34 +23,10 @@ shared Calender = let
     AddDayName = Table.AddColumn(AddDayOfWeek, "Day Name", each Date.ToText([Date], "dddd"), type text),
     AddWeekOfYear = Table.AddColumn(AddDayName, "Week of Year", each Date.WeekOfYear([Date]), Int64.Type),
     AddIsWeekend = Table.AddColumn(AddWeekOfYear, "Is Weekend", each if Date.DayOfWeek([Date]) >= 5 then true else false, type logical),
-  #"Changed column type" = Table.TransformColumnTypes(AddIsWeekend, {{"Date", type date}})
+  #"Changed column type" = Table.TransformColumnTypes(AddIsWeekend, {{"Date", type date}}),
+  #"Removed duplicates" = Table.Distinct(#"Changed column type", {"Date"})
 in
-    #"Changed column type";
-[BindToDefaultDestination = true]
-shared CustomerData = let
-  Source = Lakehouse.Contents([HierarchicalNavigation = null, EnableVorder = true, OutputMetadataRefresh = true]),
-  #"Navigation 1" = Source{[workspaceId = "35420ad7-1cd7-4ba0-aeb0-40a5bab22070"]}[Data],
-  #"Navigation 2" = #"Navigation 1"{[lakehouseId = "99671cec-d1d6-4607-8ae8-f631650da866"]}[Data],
-  #"Navigation 3" = #"Navigation 2"{[Id = "CustomerData", ItemKind = "Table"]}[Data],
-  #"Removed columns" = Table.RemoveColumns(#"Navigation 3", {"Phone"})
-in
-  #"Removed columns";
-[BindToDefaultDestination = true]
-shared Product = let
-  Source = Lakehouse.Contents([HierarchicalNavigation = null, EnableVorder = true, OutputMetadataRefresh = true]),
-  #"Navigation 1" = Source{[workspaceId = "35420ad7-1cd7-4ba0-aeb0-40a5bab22070"]}[Data],
-  #"Navigation 2" = #"Navigation 1"{[lakehouseId = "99671cec-d1d6-4607-8ae8-f631650da866"]}[Data],
-  #"Navigation 3" = #"Navigation 2"{[Id = "Product", ItemKind = "Table"]}[Data]
-in
-  #"Navigation 3";
-[BindToDefaultDestination = true]
-shared Sales = let
-  Source = Lakehouse.Contents([HierarchicalNavigation = null, EnableVorder = true, OutputMetadataRefresh = true]),
-  #"Navigation 1" = Source{[workspaceId = "35420ad7-1cd7-4ba0-aeb0-40a5bab22070"]}[Data],
-  #"Navigation 2" = #"Navigation 1"{[lakehouseId = "99671cec-d1d6-4607-8ae8-f631650da866"]}[Data],
-  #"Navigation 3" = #"Navigation 2"{[Id = "Sales", ItemKind = "Table"]}[Data]
-in
-  #"Navigation 3";
+    #"Removed duplicates";
 shared DefaultDestination = let
   Source = Lakehouse.Contents([CreateNavigationProperties = false, EnableFolding = false, HierarchicalNavigation = true, EnableVorder = true, OutputMetadataRefresh = true]),
   #"Navigation 1" = Source{[workspaceId = "35420ad7-1cd7-4ba0-aeb0-40a5bab22070"]}[Data],
@@ -58,3 +34,30 @@ shared DefaultDestination = let
   #"Navigation 3" = #"Navigation 2"{[Id = "dbo", ItemKind = "Schema"]}[Data]
 in
   #"Navigation 3";
+[BindToDefaultDestination = true]
+shared customer = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "35420ad7-1cd7-4ba0-aeb0-40a5bab22070"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "99671cec-d1d6-4607-8ae8-f631650da866"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "customer", ItemKind = "Table"]}[Data],
+  #"Removed duplicates" = Table.Distinct(#"Navigation 2", {"CustomerName"})
+in
+  #"Removed duplicates";
+[BindToDefaultDestination = true]
+shared product = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "35420ad7-1cd7-4ba0-aeb0-40a5bab22070"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "99671cec-d1d6-4607-8ae8-f631650da866"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "product", ItemKind = "Table"]}[Data],
+  #"Removed duplicates" = Table.Distinct(#"Navigation 2", {"ProductName"})
+in
+  #"Removed duplicates";
+[BindToDefaultDestination = true]
+shared sales = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "35420ad7-1cd7-4ba0-aeb0-40a5bab22070"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "99671cec-d1d6-4607-8ae8-f631650da866"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "sales", ItemKind = "Table"]}[Data],
+  #"Sorted rows" = Table.Sort(#"Navigation 2", {{"SaleID", Order.Ascending}})
+in
+  #"Sorted rows";

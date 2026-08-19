@@ -1,0 +1,12 @@
+relationship d5740614-b378-98eb-9e39-7c29256aed30
+	fromColumn: sales.CustomerID
+	toColumn: customer.CustomerID
+
+relationship 64e6c85f-5e54-f4f6-ba8e-2a715b33f477
+	fromColumn: sales.ProductID
+	toColumn: product.ProductID
+
+relationship 405924c2-22c2-6a49-310a-aad8cb43332b
+	fromColumn: sales.SaleDate
+	toColumn: calender.Date
+

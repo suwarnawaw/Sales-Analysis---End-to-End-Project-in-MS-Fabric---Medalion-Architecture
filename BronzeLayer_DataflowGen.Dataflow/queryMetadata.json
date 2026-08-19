@@ -7,19 +7,19 @@
   "queryGroups": [],
   "documentLocale": "en-US",
   "queriesMetadata": {
-    "Sales": {
+    "sales": {
       "queryId": "2209b121-606b-41f6-9272-12ced1b15eb0",
-      "queryName": "Sales",
+      "queryName": "sales",
       "loadEnabled": false
     },
-    "CustomerData": {
+    "customer": {
       "queryId": "25c83690-bf62-4e44-9134-df3884c0e5c5",
-      "queryName": "CustomerData",
+      "queryName": "customer",
       "loadEnabled": false
     },
-    "Product": {
+    "product": {
       "queryId": "a66ca49e-bf9a-42e4-8a63-a7da59d9e941",
-      "queryName": "Product",
+      "queryName": "product",
       "loadEnabled": false
     },
     "DefaultDestination": {

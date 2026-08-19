@@ -1,0 +1,56 @@
+table _BaseMeasures
+	lineageTag: db9dc8f9-eb7d-4f2c-890a-5baeec1488cd
+
+	measure Total_Orders = COUNTROWS(sales)
+		formatString: 0
+		lineageTag: ecbda89d-f84c-44c1-9ab8-ea5da2c386d9
+
+		changedProperty = Name
+
+	measure Total_Customers = DISTINCTCOUNT(sales[CustomerID])
+		formatString: 0
+		lineageTag: ff4ce97f-4357-400d-8f29-cb934bd4cecd
+
+		changedProperty = Name
+
+	measure Total_Sales = SUM(sales[TotalAmount])
+		lineageTag: 683815bc-397c-45ab-b31f-9dbd0226c279
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Total_Products = DISTINCTCOUNT('product'[ProductID])
+		formatString: 0
+		lineageTag: ced8a9b8-fed4-4e87-aa14-25226717732e
+
+	measure Previous_YTD = CALCULATE([Total_Sales], DATEADD(calender[Date],-1,YEAR))
+		lineageTag: f3859cce-c500-45d6-b9df-34931a8a5668
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Total_Category = DISTINCTCOUNT('product'[Category])
+		formatString: 0
+		lineageTag: 802771f2-1167-44bc-8610-fda417b5319a
+
+		changedProperty = Name
+
+	column Column
+		formatString: 0
+		lineageTag: 9d6bba09-3468-42fa-9afa-23536d865e05
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _BaseMeasures = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = ad52396f2cd04cdb9199affb5dc62699
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":null}
+
+	annotation 277cc1b9-af89-4597-8e15-cacc25c0886b = To use special characters in a calculated table name, enclose the entire name in brackets ( [] ) and add a ] to any closing brackets in the name.
+

@@ -1,0 +1,60 @@
+table customer
+	lineageTag: 3f5404fc-8178-47a7-a191-5775c9dc7902
+	sourceLineageTag: [dbo].[customer]
+
+	column CustomerID
+		dataType: int64
+		formatString: 0
+		lineageTag: 26a843d4-f084-472f-bf6f-28b8b4a8b797
+		sourceLineageTag: CustomerID
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		lineageTag: 0d1ce7fe-2492-4fe5-bf75-fd6544bed72d
+		sourceLineageTag: CustomerName
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: e8fa8915-99bd-4576-991d-772ba8543b5b
+		sourceLineageTag: Email
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Phone
+		dataType: string
+		lineageTag: 8f54e058-2feb-4a97-84a5-a4bbb28f0469
+		sourceLineageTag: Phone
+		summarizeBy: none
+		sourceColumn: Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 34c10807-59bd-4cbf-8f75-96812eeba694
+		sourceLineageTag: City
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: City
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	partition customer = entity
+		mode: directLake
+		source
+			entityName: customer
+			schemaName: dbo
+			expressionSource: 'DirectLake - GoldLayer_LH'
+

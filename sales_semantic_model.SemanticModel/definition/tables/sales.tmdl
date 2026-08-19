@@ -1,0 +1,62 @@
+table sales
+	lineageTag: fb6ca632-7248-4b43-86ab-f93e5d0f3bb7
+	sourceLineageTag: [dbo].[sales]
+
+	column SaleID
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e709692-18af-4da3-a58f-38ff5ae21a5f
+		sourceLineageTag: SaleID
+		summarizeBy: count
+		sourceColumn: SaleID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerID
+		dataType: int64
+		formatString: 0
+		lineageTag: a3e2b756-d544-4752-8501-f1ee956bc5ef
+		sourceLineageTag: CustomerID
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: f3713f42-cb07-4768-8d96-6f5345c242d9
+		sourceLineageTag: ProductID
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalAmount
+		dataType: double
+		lineageTag: 67fd697c-acfb-448f-ab0e-b84f9fd66dfc
+		sourceLineageTag: TotalAmount
+		summarizeBy: sum
+		sourceColumn: TotalAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SaleDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1efa743f-cf6f-4b68-920d-330be66d2bca
+		sourceLineageTag: SaleDate
+		summarizeBy: none
+		sourceColumn: SaleDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sales = entity
+		mode: directLake
+		source
+			entityName: sales
+			schemaName: dbo
+			expressionSource: 'DirectLake - GoldLayer_LH'
+

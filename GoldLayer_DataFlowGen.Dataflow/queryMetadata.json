@@ -7,30 +7,30 @@
   "queryGroups": [],
   "documentLocale": "en-US",
   "queriesMetadata": {
-    "Calender": {
-      "queryId": "b50b3280-ef36-4de2-89aa-3585b4614dc9",
-      "queryName": "Calender",
-      "loadEnabled": false
-    },
-    "CustomerData": {
-      "queryId": "7d8988ec-d3e5-4512-a7a8-16b064598f70",
-      "queryName": "CustomerData",
-      "loadEnabled": false
-    },
-    "Product": {
-      "queryId": "41d716fb-b5aa-4593-a289-9f9dd7426b9e",
-      "queryName": "Product",
-      "loadEnabled": false
-    },
-    "Sales": {
-      "queryId": "d376cfc2-3425-4148-8972-165b1f691793",
-      "queryName": "Sales",
-      "loadEnabled": false
-    },
     "DefaultDestination": {
       "queryId": "d2bf3e0b-8e81-47cf-8ce4-fc7c95b0bb3c",
       "queryName": "DefaultDestination",
       "isHidden": true,
+      "loadEnabled": false
+    },
+    "calender": {
+      "queryId": "3b170049-f81e-402e-9ae2-1c1398439d27",
+      "queryName": "calender",
+      "loadEnabled": false
+    },
+    "customer": {
+      "queryId": "25b0ff35-3d75-462a-96cc-015375186d4c",
+      "queryName": "customer",
+      "loadEnabled": false
+    },
+    "product": {
+      "queryId": "066ee01c-fa78-4392-82e9-d81573ce3009",
+      "queryName": "product",
+      "loadEnabled": false
+    },
+    "sales": {
+      "queryId": "e76bbbe1-0feb-4748-997a-748cd98663bf",
+      "queryName": "sales",
       "loadEnabled": false
     }
   },
