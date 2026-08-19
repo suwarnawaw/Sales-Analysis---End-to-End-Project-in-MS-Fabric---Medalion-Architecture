@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "BronzeLayer_DataflowGen"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f58a0fbb-461e-4df4-b2ea-8724080152ca"
+  }
+}
