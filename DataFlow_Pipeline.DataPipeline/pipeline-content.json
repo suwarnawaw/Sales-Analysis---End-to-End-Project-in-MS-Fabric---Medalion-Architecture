@@ -104,6 +104,8 @@
           "secureOutput": false
         },
         "name": "Semantic model refresh",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "GoldLayer Dataflow",
